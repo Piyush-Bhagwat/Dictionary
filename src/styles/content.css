@@ -6,6 +6,7 @@
 
 .word-display .main h1 {
     font-size: 4.5em;
+    overflow: hidden;
     text-transform: capitalize;
 }
 
