@@ -40,6 +40,7 @@ function App() {
 
     return (
         <div className={`body ${darkMode ? "dark-mode" : "light-mode"}`}>
+            <div className="background"></div>
             <NavBar />
             {error ? (
                 <WordNotFound />
