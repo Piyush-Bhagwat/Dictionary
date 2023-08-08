@@ -9,16 +9,13 @@ import WordNotFound from "./Components/wordNotFound";
 
 function App() {
     const [data, setData] = useState({ loaded: false, sourceUrls: [] });
-    const [loading, setLoading] = useState(false);
-
     const { search, error, setError, darkMode } = useContext(dictContext);
+
     const getData = async () => {
-        setLoading(true);
         axios
             .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${search}`)
             .then((d) => {
                 setData(d.data[0]);
-                setLoading(false);
             })
             .catch((er) => {
                 if (er.response.status === 404) {
@@ -33,10 +30,6 @@ function App() {
         getData();
         console.log("search Updated: ", search);
     }, [search]);
-
-    // useEffect(() => {
-    //     console.log("Data Changed: ", data);
-    // }, [data]);
 
     return (
         <div className={`body ${darkMode ? "dark-mode" : "light-mode"}`}>

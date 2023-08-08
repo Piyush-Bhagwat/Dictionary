@@ -5,7 +5,6 @@ import DefinitionList from "./definitionList";
 const PronounContainer = ({ meaning = {} }) => {
     const renderDef = () => {
         if (meaning.definitions !== undefined) {
-            // console.log(false);
             return (
                 <ul className="def-list">
                     {meaning.definitions.map((def, id) => (

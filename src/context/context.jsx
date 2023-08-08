@@ -1,21 +1,18 @@
 import React, { useEffect, useState } from "react";
-import Stack from "../extra/stack";
 
 export const dictContext = React.createContext(null);
 
 export default function DictContextProvider(props) {
+    const [search, setSearch] = useState("hello"); // search value
+    const [error, setError] = useState(false); // boolen, 1 if err occured
+    const [darkMode, setDarkMode] = useState(true); // to change theme from light to dark
+    const [history, setHistory] = useState([]); // search history of the current session
 
-    const [search, setSearch] = useState("hello");
-    const [error, setError] = useState(false);
-    const [darkMode, setDarkMode] = useState(true);
-    const [history, setHistory] = useState([]);
+    useEffect(() => setError(false), [search]); //to reset error for every search
 
-    useEffect(()=>console.log("history: ", getStack()), [history]);
-    useEffect(()=> setError(false), [search]);
-
-    const toggleDarkMode = ()=>{
-        setDarkMode((prev)=>!prev);
-    }
+    const toggleDarkMode = () => {
+        setDarkMode((prev) => !prev);
+    };
 
     function push(element) {
         if (history[history.length - 1] !== element) {
@@ -58,7 +55,7 @@ export default function DictContextProvider(props) {
         getStack,
         historyIsEmpty,
         setError,
-        toggleDarkMode
+        toggleDarkMode,
     };
 
     return (
